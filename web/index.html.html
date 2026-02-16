@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bou ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+    /* 🌌 Clean Dark Atmosphere */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Quicksand', sans-serif;
+        background: linear-gradient(to bottom, #0f172a, #000000);
+        color: #f1f5f9;
+        text-align: center;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: background 2s ease; /* Smooth background change */
+    }
+
+    /* ⭐ Background Stars */
+    .star {
+        position: fixed;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: twinkle 3s infinite ease-in-out;
+        z-index: -1;
+    }
+
+    @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 0.8; transform: scale(1.2); }
+    }
+
+    /* 📦 Main Layout */
+    .container {
+        max-width: 600px;
+        width: 90%;
+        padding: 40px 20px;
+        margin-top: 5vh;
+        z-index: 10;
+    }
+
+    /* ✨ Typography */
+    h1 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 3rem;
+        margin-bottom: 5px;
+        color: #fda4af;
+        font-weight: 600;
+    }
+
+    h2 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        margin-top: 50px;
+        margin-bottom: 25px;
+        color: #e2e8f0;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        font-weight: 300;
+        color: #cbd5e1;
+    }
+
+    /* 🖋️ Clean Input */
+    input[type="text"] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #fda4af;
+        color: white;
+        padding: 10px;
+        font-size: 1.1rem;
+        text-align: center;
+        width: 80%;
+        margin-top: 20px;
+        outline: none;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.9rem;
+    }
+
+    /* 🌸 Ghost Buttons */
+    button {
+        background: transparent;
+        border: 1px solid #fda4af;
+        color: #fda4af;
+        padding: 10px 25px;
+        font-size: 0.95rem;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 8px;
+        transition: all 0.4s ease;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 500;
+    }
+
+    button:hover {
+        background: #fda4af;
+        color: #0f172a;
+        transform: translateY(-2px);
+    }
+
+    /* 📜 Story Reading Area */
+    #futureBox {
+        text-align: left;
+        margin-top: 30px;
+        min-height: 100px;
+        font-size: 1rem;
+        color: #fff;
+        padding: 10px;
+    }
+
+    .hidden { display: none; }
+    
+    .fade-in { animation: fadeIn 2s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .footer {
+        margin-top: 80px;
+        font-size: 0.8rem;
+        opacity: 0.4;
+        padding-bottom: 20px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" src="sound.mp3" loop></audio>
+
+<!-- 🔐 LOCK SCREEN -->
+<div class="container" id="lockScreen">
+    <h1 style="font-size: 2.5rem;">For My Bou ❤️</h1>
+    <p>Enter the date created for us...</p>
+    
+    <input type="text" id="password" placeholder="dao dao pass dao(our 1st conversation date)" autocomplete="off">
+    <br><br>
+    <button onclick="unlock()">Enter ❤️</button>
+    <p id="wrong" style="color:#ef4444; font-size: 0.9rem; margin-top: 10px;"></p>
+</div>
+
+<!-- ❤️ MAIN CONTENT -->
+<div class="container hidden" id="mainContent">
+
+    <h1>Hey Bouuu ❤️</h1>
+    <p style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 30px;">Turn on your sound 🎵</p>
+
+    <!-- Intro Typing -->
+    <div id="typingText" style="min-height: 80px;"></div>
+
+    <h2>Our Dreams</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+        <button onclick="showMsg(1)">Our Trip ✈️</button>
+        <button onclick="showMsg(2)">Our Home 🏡</button>
+        <button onclick="showMsg(3)">The Wedding 💍</button>
+        <button onclick="showMsg(4)">Growing Old 👵👴</button>
+    </div>
+
+    <!-- Story Display Area -->
+    <div id="futureBox"></div>
+
+    <!-- Ending Typing -->
+    <div id="endingText" style="margin-top: 40px; text-align: center;"></div>
+
+    <h2 style="font-size: 1.5rem;">Do you love me?</h2>
+
+    <button onclick="love()">Yes 💖</button>
+    <button onclick="love()">Always 😌</button>
+
+    <!-- Love Message Animation -->
+    <div id="loveMsg" style="margin-top: 20px; color: #fda4af; font-weight: bold; min-height: 30px;"></div>
+
+    <div class="footer">
+        Made by Labib for his sweety bouu🫠🙃<br>
+	love anniversary 27th December 💫
+    </div>
+
+</div>
+
+<script>
+// ✨ Minimalist Stars
+function createStars() {
+    const starCount = 80;
+    for(let i=0; i<starCount; i++){
+        let star = document.createElement("div");
+        star.classList.add("star");
+        
+        let size = Math.random() * 2;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        
+        star.style.animationDelay = Math.random() * 3 + "s";
+        
+        document.body.appendChild(star);
+    }
+}
+createStars();
+
+// 📝 Content
+let introText = "You know... I never understood when exactly you became my habit. But now, a day without you feels incomplete. You are my peace, my chaos, and my safest place. 💙";
+
+let endingFinal = "No matter how much we fight or annoy each other... at the end of the day, I still choose you. Again. And again. And again.";
+
+// 🔐 Unlock
+function unlock() {
+    let pass = document.getElementById("password").value.toLowerCase();
+
+    if(pass.includes("27") && pass.includes("december")) {
+        let lock = document.getElementById("lockScreen");
+        lock.style.transition = "opacity 1s";
+        lock.style.opacity = 0;
+
+        setTimeout(() => {
+            lock.style.display = "none";
+            let main = document.getElementById("mainContent");
+            main.classList.remove("hidden");
+            main.classList.add("fade-in");
+            
+            document.getElementById("bgMusic").play().catch(() => console.log("Audio requires interaction"));
+
+            typeText("typingText", introText, 40);
+        }, 1000);
+
+    } else {
+        document.getElementById("wrong").innerText = "Wrong date, my love 😌";
+    }
+}
+
+// ⌨️ Typing Function
+function typeText(id, text, speed) {
+    let i = 0;
+    let element = document.getElementById(id);
+    element.innerHTML = "";
+    
+    if(element.dataset.interval) clearInterval(element.dataset.interval);
+
+    let interval = setInterval(() => {
+        // Handle Line Breaks specifically
+        if (text.substring(i, i + 4) === "<br>") {
+            element.innerHTML += "<br>";
+            i += 4;
+        } else {
+            element.innerHTML += text.charAt(i);
+            i++;
+        }
+
+        if(i >= text.length) clearInterval(interval);
+    }, speed);
+    
+    element.dataset.interval = interval;
+}
+
+// 📖 Stories
+function showMsg(n) {
+    let text = "";
+    
+    document.getElementById("futureBox").innerHTML = ""; 
+
+    if(n==1) text = "Amader biye hoye geche. Ekhon tumi ar ami husband-wife. Tumi amar cutie wifuuuuu. Kintu sheshbar haneymoon a ekta proper getaway chara ar dure kothao ghurte jawa hoi ni. Tai tumi goto porshudin theke onek abdar korcbo ghurte jawar jonne. kintu ami kichu na kichu bahana dicchi bar bar, baire bahana dileo vitore vitore amaro onek beshi iccha korche tomar shathe kothao ghurte jawar jonne. Obosheshe tomar jed er kache here giye, fix korlam j ebar jabo kothao ghurte. Jawar planning to holo, kintu kothai j jawa jai, sheta niye porlam ebar moha bipode. Vebe vebe matha akupaku hoye jacche. Obosheshe decision nilam j Sylhet a jabo. Sylhet er chaa bagan ghure ashbo. Jemon vaba omon kaj, next week ei amra chole gelam Sylhet a. Shekhan kar prokriti te dube gelam dujone. Chaa baganer moddhe ekshathe dujone hatchi. Tumi eto manush er moddheo amar haat dhore kadhe matha diye hatcho. (Kono lojja shorom nai.😒 Allah!). Then amra ekshathe gelam amader cozy resort a. Shekhane boshe khabar khelam, kotto golpo korlam, hashi-moja korlam, Sylhet er tatka chaa er cup niye ekshathe chumuk dilam😋. Jemonta tumi jano, ami onek dushtu.🫣 Amar ektu dushtami korte iccha korteche. Ami bar bar khali kono na kono faake amader babu k duniyai niye ashar planning kortechi. tumi lojja paccho!🫠 etttoooo cute lagche tomake.🫠🥹 Ami tomake dekhchi. Ar aro beshi kore preme porchi.";
+    
+    if(n==2) text = "Our small cozy home... 🏠<br>You are shouting at me for leaving the wet towel on the bed again 😤. And I am just sitting there, smiling at you, because you look incredibly cute when you are angry. 💙";
+    
+    if(n==3) text = "The Wedding 💍<br>You, walking down the aisle in that dress. Everyone is watching you, but you are looking at me. I'm trying my best not to cry in front of everyone, but I fail anyway. 🥺";
+    
+    if(n==4) text = "Growing Old Together 👵👴<br>Decades later... hair grey, skin wrinkled. Still fighting over the TV remote, still laughing at silly jokes, and holding hands while walking in the park. Still in love like day one.";
+
+    typeText("futureBox", text, 20);
+    
+    if(n==4 || n==1) {
+        setTimeout(() => {
+            typeText("endingText", endingFinal, 40);
+        }, text.length * 20 + 1000);
+    }
+}
+
+// 💖 Live Writing Love Message
+function love() {
+    // 1. Change Background
+    document.body.style.background = "linear-gradient(to bottom, #1e1b4b, #000)";
+
+    // 2. Animate the text
+    let finalMsg = "I knew it! You are stuck with me forever. 😌❤️";
+    typeText("loveMsg", finalMsg, 50);
+}
+</script>
+
+</body>
+</html>
